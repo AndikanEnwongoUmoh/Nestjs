@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProductModule } from './product/product.module';
+import { productEntity } from './product/entity/product.entity';
 
 @Module({
   imports: [
@@ -12,11 +12,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'root',
       password: '',
       database: 'crud',
-      entities: [],
+      entities: [productEntity],
       synchronize: true,
     }),
+    ProductModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
+
+
+// create an emv file and pass the import
